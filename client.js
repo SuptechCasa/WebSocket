@@ -1,4 +1,5 @@
 const btnConnect=document.getElementById('connect')
+document.getElementById('envoyer').disabled=true
 let socket
 btnConnect.addEventListener('click',()=>{
     if (!socket){
@@ -6,6 +7,7 @@ btnConnect.addEventListener('click',()=>{
         socket.addEventListener('open', () => {
             document.getElementById('connect').innerText="Se déconnecter"
             console.log('Connexion ouverte');
+            document.getElementById('envoyer').disabled=false
         });
 
         socket.addEventListener('close', () => {
@@ -14,6 +16,8 @@ btnConnect.addEventListener('click',()=>{
         });
     }else{
         socket.close()
+        socket=undefined
+        document.getElementById('envoyer').disabled=true
     }
 })
 
