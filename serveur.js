@@ -3,11 +3,13 @@ const WebSocket = require('ws');
 const server = new WebSocket.Server({ port: 8080 });
 
 server.on('connection', (socket) => {
-    console.log('Nouveau client connecté');
-
     socket.on('message', (message) => {
-        console.log('Message reçu:', message.toString());
-        socket.send('Message bien reçu!');
+        receivedMsg=message.toString()
+        if (receivedMsg.slice(0,3)==="con"){
+            console.log(receivedMsg.slice(3),"connecté")
+        }else{
+            console.log(receivedMsg.slice(3))
+        }
     });
 
     socket.on('close', () => {
