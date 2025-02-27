@@ -8,6 +8,7 @@ btnConnect.addEventListener('click',()=>{
             document.getElementById('connect').innerText="Se déconnecter"
             console.log('Connexion ouverte');
             document.getElementById('envoyer').disabled=false
+            socket.send(document.getElementById('nom').value)
         });
 
         socket.addEventListener('close', () => {
