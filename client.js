@@ -16,6 +16,11 @@ btnConnect.addEventListener('click',()=>{
             console.log('Connexion fermée');
             btnConnect.innerText="Se connecter"
         });
+
+        socket.addEventListener('message', (event) => {
+            const data = event.data;
+            console.log(data);
+        });
     }else{
         socket.close()
         socket=undefined
@@ -29,10 +34,7 @@ envoyer.addEventListener('click',()=>{
 })
 
 /*
-socket.addEventListener('message', (event) => {
-    const data = JSON.parse(event.data);
-    console.log('Message reçu :', data);
-});
+
 
 
 */

@@ -6,10 +6,11 @@ server.on('connection', (socket) => {
     socket.on('message', (message) => {
         receivedMsg=message.toString()
         if (receivedMsg.slice(0,3)==="con"){
-            console.log(receivedMsg.slice(3),"connecté")
+            msg=receivedMsg.slice(3)+" connecté"
         }else{
-            console.log(receivedMsg.slice(3))
+            msg=receivedMsg.slice(3)
         }
+        socket.send(msg)
     });
 
     socket.on('close', () => {
